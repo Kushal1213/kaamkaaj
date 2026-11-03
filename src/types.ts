@@ -25,3 +25,9 @@ export type Application = {
 };
 
 export type Page = 'home' | 'jobs' | 'saved' | 'tracker' | 'employers';
+
+export type LocalUser = {
+  name: string;
+  identifier: string;
+  role: 'candidate' | 'employer';
+};

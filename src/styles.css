@@ -48,9 +48,23 @@ p { text-wrap: pretty; }
 .desktop-nav button:hover, .desktop-nav button.active { background: #f0f3f9; color: var(--ink); }
 .count { display: inline-grid; place-items: center; min-width: 18px; height: 18px; margin-left: 6px; padding: 0 4px; border-radius: 8px; background: var(--blue); color: white; font-size: .7rem; }
 .header-actions { display: flex; align-items: center; gap: .55rem; }
-.language-button, .login-button, .menu-button { border: 0; background: transparent; cursor: pointer; }
-.language-button { display: flex; align-items: center; gap: 3px; padding: .7rem; font-size: .8rem; font-weight: 750; }
+.header-menu-wrap { position: relative; }
+.language-button, .login-button, .profile-button, .menu-button { border: 0; background: transparent; cursor: pointer; }
+.language-button { display: flex; align-items: center; gap: 5px; padding: .7rem; font-size: .8rem; font-weight: 750; }
 .login-button { display: flex; align-items: center; gap: .45rem; padding: .65rem .85rem; border: 1px solid var(--line); border-radius: 10px; background: white; font-weight: 700; }
+.profile-button { min-height: 44px; display: flex; align-items: center; gap: .45rem; padding: .35rem .65rem .35rem .35rem; border: 1px solid var(--line); border-radius: 12px; background: white; font-weight: 750; }
+.profile-initial { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 9px; background: var(--blue); color: white; font-size: .78rem; font-weight: 900; }
+.header-popover { position: absolute; top: calc(100% + 10px); right: 0; z-index: 60; min-width: 220px; overflow: hidden; padding: .45rem; border: 1px solid var(--line); border-radius: 14px; background: white; box-shadow: 0 18px 45px rgba(24,40,78,.16); animation: modal-in .18s ease both; }
+.header-popover button { width: 100%; min-height: 42px; display: flex; align-items: center; gap: .65rem; border: 0; border-radius: 9px; padding: .65rem .7rem; background: transparent; cursor: pointer; text-align: left; font-size: .84rem; font-weight: 700; }
+.header-popover button:hover, .header-popover button.active { background: var(--soft); color: var(--blue); }
+.language-popover { min-width: 190px; }
+.language-popover button span { width: 28px; color: #6f7a90; font-size: .72rem; font-weight: 900; }
+.language-popover button svg { margin-left: auto; }
+.account-summary { padding: .7rem .7rem .8rem; border-bottom: 1px solid #edf0f5; }
+.account-summary strong, .account-summary span, .account-summary small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.account-summary strong { font-size: .92rem; }
+.account-summary span { margin-top: .25rem; color: var(--blue); font-size: .72rem; font-weight: 750; }
+.account-summary small { margin-top: .35rem; color: #7b8598; }
 .menu-button { display: none; padding: .6rem; }
 .mobile-nav { display: none; }
 
@@ -213,6 +227,17 @@ p { text-wrap: pretty; }
 
 .modal-backdrop { position: fixed; inset: 0; z-index: 70; display: grid; place-items: center; padding: 1rem; background: rgba(12,20,38,.62); backdrop-filter: blur(8px); }
 .apply-modal { position: relative; width: min(470px, 100%); max-height: calc(100dvh - 2rem); overflow: auto; padding: 1.8rem; border-radius: 20px; background: white; box-shadow: 0 30px 80px rgba(5,14,34,.3); animation: modal-in .25s ease both; }
+.auth-modal { position: relative; width: min(460px, 100%); max-height: calc(100dvh - 2rem); overflow: auto; padding: 1.8rem; border-radius: 20px; background: white; box-shadow: 0 30px 80px rgba(5,14,34,.3); animation: modal-in .25s ease both; }
+.auth-modal h2 { margin: .45rem 2rem .5rem 0; font-size: 2rem; letter-spacing: -.045em; }
+.auth-modal > p { color: var(--muted); line-height: 1.55; }
+.role-switch { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; margin: 1.2rem 0; padding: .35rem; border-radius: 13px; background: #f0f3f8; }
+.role-switch button { min-height: 44px; display: flex; align-items: center; justify-content: center; gap: .45rem; border: 0; border-radius: 10px; background: transparent; cursor: pointer; font-weight: 750; }
+.role-switch button.active { background: white; color: var(--blue); box-shadow: 0 4px 12px rgba(35,54,95,.1); }
+.auth-modal label { display: block; margin: .9rem 0 0; color: #303b52; font-size: .82rem; font-weight: 750; }
+.auth-modal input { width: 100%; height: 50px; margin-top: .5rem; padding: 0 .9rem; border: 1px solid #ccd3e2; border-radius: 11px; outline: 0; }
+.auth-modal input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(22,71,216,.11); }
+.auth-modal .button { width: 100%; margin-top: 1.25rem; }
+.auth-modal small { display: block; margin-top: .8rem; color: #7d8799; line-height: 1.45; text-align: center; }
 .apply-modal h2 { margin: .5rem 2rem .45rem 0; font-size: 1.65rem; letter-spacing: -.035em; }
 .apply-modal > p { color: var(--muted); }
 .apply-modal form { margin-top: 1.2rem; }
@@ -226,7 +251,12 @@ p { text-wrap: pretty; }
 @keyframes toast-in { from { opacity: 0; transform: translate(-50%, 12px); } to { opacity: 1; transform: translate(-50%, 0); } }
 
 @media (max-width: 900px) {
-  .desktop-nav, .language-button, .login-button { display: none; }
+  .desktop-nav { display: none; }
+  .language-button { padding-inline: .45rem; }
+  .login-button { padding: .55rem; }
+  .login-button svg { width: 24px; height: 24px; }
+  .login-button { font-size: 0; }
+  .profile-name { display: none; }
   .menu-button { display: grid; place-items: center; }
   .mobile-nav { display: grid; padding: .45rem 20px 1rem; border-top: 1px solid #edf0f5; background: white; }
   .mobile-nav button { border: 0; padding: .8rem; background: transparent; text-align: left; font-weight: 750; }
@@ -250,6 +280,11 @@ p { text-wrap: pretty; }
   .header-inner { height: 64px; }
   .brand-word { font-size: 1.12rem; }
   .brand-mark { width: 34px; height: 34px; }
+  .header-actions { gap: .15rem; }
+  .language-button { font-size: .72rem; }
+  .profile-button { min-height: 40px; padding: .25rem; border: 0; }
+  .profile-initial { width: 34px; height: 34px; }
+  .header-popover { position: fixed; top: 70px; right: 14px; left: 14px; }
   .hero { padding-top: 45px; }
   .hero h1 { font-size: clamp(3.1rem, 16vw, 4.8rem); }
   .hero-proof { display: grid; gap: .7rem; }

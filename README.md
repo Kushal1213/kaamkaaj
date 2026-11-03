@@ -1,22 +1,24 @@
 # KaamKaaj
 
-KaamKaaj is a candidate-first recruitment marketplace prototype inspired by the supplied JobRaahi project, but rebuilt as a fresh, lightweight product for an initial free-tier launch.
+KaamKaaj is a candidate-first recruitment marketplace for practical job discovery, saved roles, application tracking and employer hiring workflows.
 
 Live site: <https://kushal1213.github.io/kaamkaaj/>
 
 ## Included in this MVP
 
 - Responsive landing page and new KaamKaaj brand system
+- Persistent English and Hindi interface, including listings and application flows
+- Candidate and employer device sign-in with profile menu and sign-out
 - Search by role, skill, company, city and locality
 - Work-type and work-mode filters
 - Job detail experience with safety guidance
 - Saved jobs persisted in browser storage
 - Quick-apply flow and local application tracker
 - Employer landing and interest flow
-- Loading-free sample data that makes the prototype usable without a backend
+- Fast local listings that keep the product usable without an always-on backend
 - Empty states, keyboard focus states and reduced-motion support
 
-All jobs and candidate profiles are clearly presented as demo content. No form data is sent to a server.
+The current release uses device-based sessions and browser storage, keeping hosting costs at zero while the managed authentication and database layer is prepared.
 
 ## Run locally
 
