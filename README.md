@@ -2,6 +2,8 @@
 
 KaamKaaj is a candidate-first recruitment marketplace prototype inspired by the supplied JobRaahi project, but rebuilt as a fresh, lightweight product for an initial free-tier launch.
 
+Live site: <https://kushal1213.github.io/kaamkaaj/>
+
 ## Included in this MVP
 
 - Responsive landing page and new KaamKaaj brand system
@@ -29,7 +31,7 @@ Build the production bundle with:
 npm run build
 ```
 
-The generated `dist/` directory can be hosted as a static site. For an early commercial KaamKaaj pilot, Cloudflare Pages is the preferred free-tier target: this build is comfortably below its static file and individual asset limits. Vercel Hobby is technically convenient, but its published terms describe Hobby as personal and non-commercial, so it should not be the default for a business launch.
+The generated `dist/` directory is deployed automatically to GitHub Pages after every push to `main`. The same static output remains portable to Cloudflare Pages or another static host later.
 
 ## Initial hosting architecture
 
